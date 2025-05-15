@@ -10,9 +10,6 @@ lazy val root = project
 
     libraryDependencies += "org.scalameta" %% "munit" % "1.0.0" % Test
   )
-scalacOptions ++= Seq(
-  "-Ymacro-annotations" // enables macro annotations like @stateMachine
-)
 
 libraryDependencies ++= Seq(
   "org.scala-lang" %% "scala3-library" % scalaVersion.value
