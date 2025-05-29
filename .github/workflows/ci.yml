@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - lexer
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: sbt
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+
+      - name: Show sbt version
+        run: sbt sbtVersion
+
+      - name: clean scala
+        run: sbt clean
+
+      - name: Run tests
+        run: sbt test
